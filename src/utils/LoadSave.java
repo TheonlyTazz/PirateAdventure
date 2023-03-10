@@ -1,5 +1,6 @@
 package utils;
 
+import entities.Crabby;
 import main.Game;
 
 import javax.imageio.ImageIO;
@@ -8,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.Buffer;
+import java.util.ArrayList;
+import static utils.Constants.EnemyConstants.*;
 
 public class LoadSave {
 
@@ -24,6 +27,8 @@ public class LoadSave {
     public static final String PLAYING_BG_IMG = "Level/playing_bg_img.png";
     public static final String BIG_CLOUDS = "Level/big_clouds.png";
     public static final String SMALL_CLOUDS = "Level/small_clouds.png";
+    public static final String CRABBY_SPRITE = "Entities/crabby_sprite.png";
+
 
 
 
@@ -46,6 +51,19 @@ public class LoadSave {
         return img;
     }
 
+    public static ArrayList<Crabby> GetCrabs(){
+        BufferedImage img = getSpriteAtlas(LEVEL_ONE_DATA);
+        ArrayList<Crabby> list = new ArrayList<>();
+
+        for(int height = 0; height < img.getHeight(); height++)
+            for (int width =0; width < img.getWidth(); width++){
+                Color color = new Color(img.getRGB(width, height));
+                int value = color.getGreen();
+                if(value == CRABBY)
+                    list.add(new Crabby(width * Game.TILES_SIZE, height * Game.TILES_SIZE));
+            }
+        return list;
+    }
     public static int[][] getLevelData(){
         BufferedImage img = getSpriteAtlas(LEVEL_ONE_DATA);
         int[][] lvlData = new int[img.getHeight()][img.getWidth()];
