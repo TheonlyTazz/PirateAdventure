@@ -123,6 +123,7 @@ public class Game implements Runnable {
     public void windowFocusLost() {
         if (Gamestate.state == Gamestate.PLAYING)
             playing.getPlayer().resetDirBooleans();
+            playing.pauseGame();
     }
 
     public Menu getMenu() {

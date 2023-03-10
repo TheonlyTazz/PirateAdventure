@@ -30,6 +30,7 @@ public class GameWindow {
                 System.out.println("BYE");
                 gamePanel.getGame().windowFocusLost();
 
+
             }
         });
 

@@ -13,9 +13,19 @@ public class LoadSave {
 
     public static final String PLAYER_ATLAS = "Player/player_sprites.png";
     public static final String LEVEL_ATLAS = "Level/outside_sprites.png";
-    public static final String LEVEL_ONE_DATA = "Level/level_one_data.png";
+    public static final String LEVEL_ONE_DATA = "Level/level_one_data_long.png";
     public static final String MENU_BUTTONS = "UI/button_atlas.png";
     public static final String MENU_BACKGROUND = "UI/menu_background.png";
+    public static final String MENU_BACKGROUND_IMG = "UI/background_menu.png";
+    public static final String PAUSE_BACKGROUND = "UI/pause_menu.png";
+    public static final String SOUND_BUTTONS = "UI/sound_button.png";
+    public static final String URM_BUTTONS = "UI/urm_buttons.png";
+    public static final String VOLUME_BUTTONS = "UI/volume_buttons.png";
+    public static final String PLAYING_BG_IMG = "Level/playing_bg_img.png";
+    public static final String BIG_CLOUDS = "Level/big_clouds.png";
+    public static final String SMALL_CLOUDS = "Level/small_clouds.png";
+
+
 
 
 
@@ -37,8 +47,9 @@ public class LoadSave {
     }
 
     public static int[][] getLevelData(){
-        int[][] lvlData = new int[Game.TILES_IN_HEIGHT][Game.TILES_IN_WIDTH];
         BufferedImage img = getSpriteAtlas(LEVEL_ONE_DATA);
+        int[][] lvlData = new int[img.getHeight()][img.getWidth()];
+
 
         for(int height = 0; height < img.getHeight(); height++)
             for (int width =0; width < img.getWidth(); width++){
