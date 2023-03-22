@@ -3,7 +3,6 @@ package ui;
 import gamestates.Gamestate;
 import gamestates.Playing;
 import main.Game;
-import utils.Constants;
 import utils.LoadSave;
 
 import java.awt.*;
@@ -60,7 +59,7 @@ public class PauseOverlay {
     }
 
     private void loadBackground() {
-        backgroundImg = LoadSave.getSpriteAtlas(LoadSave.PAUSE_BACKGROUND);
+        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PAUSE_BACKGROUND);
         bgW = (int) (backgroundImg.getWidth() * Game.SCALE);
         bgH = (int) (backgroundImg.getHeight() * Game.SCALE);
         bgX = Game.GAME_WIDTH / 2 - bgW / 2;
@@ -143,12 +142,14 @@ public class PauseOverlay {
         else if(isIn(e, menuB)) {
             if (menuB.isMousePressed()) {
                 Gamestate.state = Gamestate.MENU;
+                playing.resetAll();
                 playing.unpauseGame();
             }
         }
         else if(isIn(e, replayB)) {
             if (replayB.isMousePressed()) {
-                System.out.println("REPLAY LVL");
+                playing.resetAll();
+                playing.unpauseGame();
             }
         }
         else if(isIn(e, unpauseB)) {

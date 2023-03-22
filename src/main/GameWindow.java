@@ -1,44 +1,38 @@
 package main;
 
-import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
+import javax.swing.JFrame;
+
 public class GameWindow {
-    private JFrame jframe;
-    private int screenWidth = 400;
-    private int screenHeight = 400;
-    public GameWindow(GamePanel gamePanel){
+	private JFrame jframe;
 
-        jframe = new JFrame();
+	public GameWindow(GamePanel gamePanel) {
 
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.add(gamePanel);
-        jframe.setResizable(false);
-        jframe.pack();
-        jframe.setLocationRelativeTo(null);
-        jframe.setVisible(true);
-        jframe.addWindowFocusListener(new WindowFocusListener() {
-            @Override
-            public void windowGainedFocus(WindowEvent e) {
-                System.out.println("HI");
+		jframe = new JFrame();
 
-            }
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jframe.add(gamePanel);
+		
+		jframe.setResizable(false);
+		jframe.pack();
+		jframe.setLocationRelativeTo(null);
+		jframe.setVisible(true);
+		jframe.addWindowFocusListener(new WindowFocusListener() {
 
-            @Override
-            public void windowLostFocus(WindowEvent e) {
-                System.out.println("BYE");
-                gamePanel.getGame().windowFocusLost();
+			@Override
+			public void windowLostFocus(WindowEvent e) {
+				gamePanel.getGame().windowFocusLost();
+			}
 
+			@Override
+			public void windowGainedFocus(WindowEvent e) {
+				// TODO Auto-generated method stub
 
-            }
-        });
+			}
+		});
 
-    }
-    public int getScreenWidth(){
-        return screenWidth;
-    }
-    public int getScreenHeight(){
-        return screenHeight;
-    }
+	}
+
 }

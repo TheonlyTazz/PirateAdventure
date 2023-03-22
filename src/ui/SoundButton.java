@@ -1,6 +1,5 @@
 package ui;
 
-import utils.Constants;
 import utils.LoadSave;
 import static utils.Constants.UI.PauseButtons.*;
 
@@ -20,7 +19,7 @@ public class SoundButton extends PauseButton{
     }
 
     private void loadSoundImg() {
-        BufferedImage temp = LoadSave.getSpriteAtlas(LoadSave.SOUND_BUTTONS);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SOUND_BUTTONS);
         soundImgs = new BufferedImage[2][3];
         for(int height = 0; height < soundImgs.length; height++)
             for(int width = 0; width < soundImgs[height].length; width++)
