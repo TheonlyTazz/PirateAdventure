@@ -49,28 +49,28 @@ public class Crabby extends Enemy {
 			updateInAir(lvlData);
 		else {
 			switch (enemyState) {
-			case IDLE:
-				newState(RUNNING);
-				break;
-			case RUNNING:
-				if (canSeePlayer(lvlData, player)) {
-					turnTowardsPlayer(player);
+				case IDLE:
+					newState(RUNNING);
+					break;
+				case RUNNING:
+					if (canSeePlayer(lvlData, player))
+						turnTowardsPlayer(player);
 					if (isPlayerCloseForAttack(player))
 						newState(ATTACK);
-				}
-				move(lvlData);
-				break;
-			case ATTACK:
-				if (aniIndex == 0)
-					attackChecked = false;
 
-				// Changed the name for checkEnemyHit to checkPlayerHit
-				if (aniIndex == 3 && !attackChecked)
-					checkPlayerHit(attackBox, player);
+					move(lvlData);
+					break;
+				case ATTACK:
+					if (aniIndex == 0)
+						attackChecked = false;
 
-				break;
-			case HIT:
-				break;
+					// Changed the name for checkEnemyHit to checkPlayerHit
+					if (aniIndex == 3 && !attackChecked)
+						checkPlayerHit(attackBox, player);
+
+					break;
+				case HIT:
+					break;
 			}
 		}
 
